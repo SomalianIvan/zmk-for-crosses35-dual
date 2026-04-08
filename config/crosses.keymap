@@ -31,7 +31,7 @@
  *   3 NUM     ← right mid thumb hold  — numpad on left hand
  *   4 SYM     ← right inner thumb hold — symbols on left hand
  *   5 FUN     ← right outer thumb hold — F-keys on left hand
- *   6 MOUSE   ← Z/SLASH hold — trackball mouse buttons
+ *   6 MOUSE   ← auto-activates on trackball movement (+ Z/SLASH hold fallback)
  *
  * Thumb cluster (left → right):
  *   Left:  ESC/MEDIA | TAB/GUI | SPC/NAV
@@ -45,11 +45,30 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <input/processors.dtsi>
 
 / {
     chosen {
         zmk,physical-layout = &gggw_crosses_36_layout;
     };
+
+    /* Auto mouse layer: trackball movement activates MOUSE layer (6),
+     * deactivates after 2s of no movement.
+     * require-prior-idle-ms: don't activate if typing happened < 500ms ago
+     * excluded-positions: thumb keys (mouse buttons) don't deactivate the layer */
+    auto_mouse_layer: auto_mouse_layer {
+        compatible = "zmk,input-processor-temp-layer";
+        #input-processor-cells = <2>;
+        require-prior-idle-ms = <500>;
+        excluded-positions = <30 31 32 33 34 35>;
+    };
+};
+
+/* Override the right trackball listener to add auto mouse layer.
+ * The shield overlay sets: input-processors = <&zip_ble_report_rate_limit>;
+ * We prepend the auto mouse layer processor. */
+&trackball_central_listener {
+    input-processors = <&auto_mouse_layer 6 2000>, <&zip_ble_report_rate_limit>;
 };
 
 #define BASE  0
