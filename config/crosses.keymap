@@ -251,7 +251,7 @@ HRML(A,               S,              D,              F)          &kp G         
 &kp LBRC         &kp AMPS       &kp ASTRK       &kp LPAR        &kp RBRC           &kp DQT         &none           &none           &none          &none
 &kp COLON        &kp DLLR       &kp PRCNT       &kp CARET       &kp PLUS           &kp SQT         &kp RSHFT       &kp RCTRL       &kp RALT       &kp RGUI
 &kp TILDE        &kp EXCL       &kp AT          &kp HASH        &kp PIPE           &none           &none           &none           &none          &none
-                                &kp LPAR        &kp RPAR        &kp UNDER          &none           &none           &none
+                                &kp UNDER       &kp LPAR        &kp RPAR           &none           &none           &none
             >;
         };
 
