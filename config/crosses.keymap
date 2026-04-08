@@ -194,11 +194,11 @@
          * ├──────┼──────┼──────┼──────┼──────┤    ├──────┼──────┼──────┼──────┼──────┤
          * │Z/MSE │  X   │  C   │  V   │  B   │    │  N   │  M   │  ,   │  .   │//MSE │
          * ╰──────┴──────┴──────┼──────┼──────┤    ├──────┼──────┼──────┴──────┴──────╯
-         *                      │ESC   │TAB   │    │ENT   │BSPC  │
-         *                      │MEDIA │GUI/TB│    │SYM   │NUM   │
+         *                      │SPC   │TAB   │    │BSPC  │DEL   │
+         *                      │NAV   │GUI/TB│    │NUM   │FUN   │
          *                      ╰──────┼──────┤    ├──────┼──────╯
-         *                             │SPC   │    │DEL   │
-         *                             │NAV   │    │FUN   │
+         *                             │ESC   │    │ENT   │
+         *                             │MEDIA │    │SYM   │
          *                             ╰──────╯    ╰──────╯
          */
         base_layer {
@@ -207,7 +207,7 @@
 &kp Q             &kp W          &kp E           &kp R           &kp T              &kp Y           &kp U           &kp I           &kp O          &kp P
 HRML(A,               S,              D,              F)          &kp G              &kp H           HRMR(J,              K,              L,             SEMI)
 &lt MOUSE Z       &kp X          &kp C           &kp V           &kp B              &kp N           &kp M           &kp COMMA       &kp DOT        &lt MOUSE FSLH
-                                 &lt_ret MEDIA ESC &hm_l LGUI TAB &lt_ret NAV SPACE  &lt_ret SYM RET &lt_ret NUM BSPC &lt_ret FUN DEL
+                                 &lt_ret NAV SPACE &hm_l LGUI TAB &lt_ret MEDIA ESC  &lt_ret FUN DEL &lt_ret NUM BSPC &lt_ret SYM RET
             >;
         };
 
@@ -218,7 +218,7 @@ HRML(A,               S,              D,              F)          &kp G         
 &kp LA(Q)        &kp LA(W)      &kp LA(E)       &kp LA(LS(M))   &kp LA(F)          &none           &vim_pt         &vim_nt         &vim_pb        &vim_nb
 &kp LA(TAB)      &kp LG(TAB)    &kp LG(LS(LBKT)) &kp LG(LS(RBKT)) &kp LA(FSLH)     &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT      &kp RET
 &kp LA(GRAVE)    &kp LA(LS(GRAVE)) &kp LA(C)    &kp LA(V)       &none              &term_esc       &kp HOME        &kp PG_DN       &kp PG_UP      &kp END
-                                 &none           &none           &none              &kp RET         &kp BSPC        &kp DEL
+                                 &none           &none           &none              &kp DEL         &kp BSPC        &kp RET
             >;
         };
 
@@ -229,7 +229,7 @@ HRML(A,               S,              D,              F)          &kp G         
 &none            &none          &none           &none           &none              &none           &none           &none           &none          &none
 &kp LGUI         &kp LALT       &kp LCTRL       &kp LSHFT       &none              &none           &kp C_PREV      &kp C_VOL_DN    &kp C_VOL_UP   &kp C_NEXT
 &none            &none          &none           &none           &none              &bt BT_CLR      &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2   &bt BT_SEL 3
-                                &none           &none           &none              &kp C_STOP      &kp C_PP        &kp C_MUTE
+                                &none           &none           &none              &kp C_MUTE      &kp C_PP        &kp C_STOP
             >;
         };
 
@@ -240,7 +240,7 @@ HRML(A,               S,              D,              F)          &kp G         
 &kp LBKT         &kp N7         &kp N8          &kp N9          &kp RBKT           &none           &none           &none           &none          &none
 &kp SEMI         &kp N4         &kp N5          &kp N6          &kp EQUAL          &none           &kp RSHFT       &kp RCTRL       &kp RALT       &kp RGUI
 &kp GRAVE        &kp N1         &kp N2          &kp N3          &kp BSLH           &none           &none           &none           &none          &none
-                                &kp DOT         &kp N0          &kp MINUS          &none           &none           &none
+                                &kp MINUS       &kp N0          &kp DOT            &none           &none           &none
             >;
         };
 
@@ -262,7 +262,7 @@ HRML(A,               S,              D,              F)          &kp G         
 &kp F12          &kp F7         &kp F8          &kp F9          &kp PSCRN          &none           &none           &none           &none          &none
 &kp F11          &kp F4         &kp F5          &kp F6          &kp SLCK           &none           &kp RSHFT       &kp RCTRL       &kp RALT       &kp RGUI
 &kp F10          &kp F1         &kp F2          &kp F3          &kp PAUSE_BREAK    &none           &none           &none           &none          &none
-                                &kp K_APP       &kp TAB         &kp SPACE          &none           &none           &none
+                                &kp SPACE       &kp TAB         &kp K_APP          &none           &none           &none
             >;
         };
 
@@ -279,7 +279,7 @@ HRML(A,               S,              D,              F)          &kp G         
 &bt BT_SEL 0     &bt BT_SEL 1   &bt BT_SEL 2    &none           &bt BT_CLR         &bt BT_CLR      &none           &bt BT_SEL 2    &bt BT_SEL 1   &bt BT_SEL 0
 &none            &mkp MCLK      &mkp RCLK       &mkp LCLK       &none              &none           &none           &none           &none          &none
 &trans           &none          &none           &none           &none              &none           &none           &none           &none          &trans
-                                &mkp MCLK       &mkp LCLK       &mkp RCLK          &mkp RCLK       &mkp LCLK       &mkp MCLK
+                                &mkp RCLK       &mkp LCLK       &mkp MCLK          &mkp MCLK       &mkp LCLK       &mkp RCLK
             >;
         };
     };
